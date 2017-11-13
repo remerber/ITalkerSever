@@ -1,8 +1,8 @@
 package net.ww.web.italker.push.bean.card;
 
+
 import com.google.gson.annotations.Expose;
 import net.ww.web.italker.push.bean.db.User;
-
 
 import java.time.LocalDateTime;
 

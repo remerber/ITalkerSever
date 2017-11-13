@@ -2,6 +2,7 @@ package net.ww.web.italker.push;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import com.sun.media.jfxmedia.logging.Logger;
+import net.ww.web.italker.push.provider.AuthRequestFilter;
 import net.ww.web.italker.push.provider.GsonProvider;
 import net.ww.web.italker.push.service.AccountService;
 import net.ww.web.italker.push.service.AccountService;
@@ -15,6 +16,8 @@ public class Application extends ResourceConfig{
         // 注册逻辑处理的包名
         //packages("net.ww.web.italker.push.service");
         packages(AccountService.class.getPackage().getName());
+
+        register(AuthRequestFilter.class);
 
         // 注册Json解析器
         // register(JacksonJsonProvider.class);
