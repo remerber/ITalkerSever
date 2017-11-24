@@ -4,8 +4,9 @@ import com.google.common.base.Strings;
 import net.ww.web.italker.push.bean.api.account.AccountRspModel;
 import net.ww.web.italker.push.bean.api.account.LoginModel;
 import net.ww.web.italker.push.bean.api.account.RegisterModel;
-import net.ww.web.italker.push.bean.api.bean.ResponseModel;
+import net.ww.web.italker.push.bean.api.base.ResponseModel;
 import net.ww.web.italker.push.bean.db.User;
+import net.ww.web.italker.push.bean.db.UserFollow;
 import net.ww.web.italker.push.factory.UserFactory;
 
 
@@ -140,4 +141,8 @@ public class AccountService extends BaseService {
         return ResponseModel.buildOk(rspModel);
 
     }
+
+
+
+
 }

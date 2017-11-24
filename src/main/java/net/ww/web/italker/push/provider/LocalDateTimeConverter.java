@@ -1,6 +1,5 @@
 package net.ww.web.italker.push.provider;
 
-
 import com.google.gson.*;
 
 import java.lang.reflect.Type;

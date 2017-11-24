@@ -1,10 +1,10 @@
 package net.ww.web.italker.push.bean.db;
 
+
 import org.hibernate.annotations.*;
 
-
-import javax.persistence.*;
 import javax.persistence.CascadeType;
+import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.security.Principal;
@@ -13,11 +13,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by HP on 2017/10/26.
+ * 用户的Model，对应数据库
+ *
+ * @author qiujuer Email:qiujuer@live.cn
+ * @version 1.0.0
  */
 @Entity
 @Table(name = "TB_USER")
-public class User  implements Principal{
+public class User implements Principal {
+
     // 这是一个主键
     @Id
     @PrimaryKeyJoinColumn
@@ -74,51 +78,36 @@ public class User  implements Principal{
     private LocalDateTime lastReceivedAt = LocalDateTime.now();
 
 
-    //我关注的人的列表方法
-    //对应的数据库表字段为TB_USER_FOLLOW.originId
+    // 我关注的人的列表方法
+    // 对应的数据库表字段为TB_USER_FOLLOW.originId
     @JoinColumn(name = "originId")
-    //定义懒加载,默认加载User信息的时候，并不查询这个集合
+    // 定义为懒加载，默认加载User信息的时候，并不查询这个集合
     @LazyCollection(LazyCollectionOption.EXTRA)
-    //1对多，一个用户可以很多人关注，每一个关注都是一个记录
+    // 1对多，一个用户可以有很多关注人，每一次关注都是一个记录
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<UserFollow> following = new HashSet<UserFollow>();
+    private Set<UserFollow> following = new HashSet<>();
 
 
-    // 关注我的人的列表方法
-    //对应的数据库表字段为TB_USER_FOLLOW.targetId
+    // 关注我的人的列表
+    // 对应的数据库表字段为TB_USER_FOLLOW.targetId
     @JoinColumn(name = "targetId")
-    //定义懒加载,默认加载User信息的时候，并不查询这个集合
+    // 定义为懒加载，默认加载User信息的时候，并不查询这个集合
     @LazyCollection(LazyCollectionOption.EXTRA)
-    //1对多，一个用户可以很多人关注，每一个关注都是一个记录
+    // 1对多，一个用户可以被很多人关注，每一次关注都是一个记录
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<UserFollow> followers = new HashSet<UserFollow>();
+    private Set<UserFollow> followers = new HashSet<>();
 
-
-    //我所创建的群
-    //对应的字段为Group.ownerId
+    // 我所有创建的群
+    // 对应的字段为：Group.ownerId
     @JoinColumn(name = "ownerId")
-    //懒加载集合方式尽可能的不加载具体的数据
-    //当访问group。size()仅仅查询数量，不加载具体的Group信息
-    //只有当遍历结合的时候才加载具体的数据
+    // 懒加载集合方式为尽可能的不加载具体的数据，
+    // 当访问groups.size()仅仅查询数量，不加载具体的Group信息
+    // 只有当遍历集合的时候才加载具体的数据
     @LazyCollection(LazyCollectionOption.EXTRA)
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Set<Group> groups=new HashSet<Group>();
+    // FetchType.LAZY：懒加载，加载用户信息时不加载这个集合
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Group> groups = new HashSet<>();
 
-    public Set<UserFollow> getFollowing() {
-        return following;
-    }
-
-    public void setFollowing(Set<UserFollow> following) {
-        this.following = following;
-    }
-
-    public Set<UserFollow> getFollowers() {
-        return followers;
-    }
-
-    public void setFollowers(Set<UserFollow> followers) {
-        this.followers = followers;
-    }
 
     public String getId() {
         return id;
@@ -176,14 +165,6 @@ public class User  implements Principal{
         this.sex = sex;
     }
 
-    public Set<Group> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(Set<Group> groups) {
-        this.groups = groups;
-    }
-
     public String getToken() {
         return token;
     }
@@ -224,5 +205,27 @@ public class User  implements Principal{
         this.lastReceivedAt = lastReceivedAt;
     }
 
+    public Set<UserFollow> getFollowing() {
+        return following;
+    }
 
+    public void setFollowing(Set<UserFollow> following) {
+        this.following = following;
+    }
+
+    public Set<UserFollow> getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(Set<UserFollow> followers) {
+        this.followers = followers;
+    }
+
+    public Set<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(Set<Group> groups) {
+        this.groups = groups;
+    }
 }

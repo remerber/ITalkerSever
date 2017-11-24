@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import net.ww.web.italker.push.bean.card.UserCard;
 import net.ww.web.italker.push.bean.db.User;
 
+
 /**
  * 账户部分返回的Model
  *

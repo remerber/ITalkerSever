@@ -8,7 +8,10 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
- * Created by HP on 2017/10/29.
+ * 消息推送历史记录表
+ *
+ * @author qiujuer Email:qiujuer@live.cn
+ * @version 1.0.0
  */
 @Entity
 @Table(name = "TB_PUSH_HISTORY")

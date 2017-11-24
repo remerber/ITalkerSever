@@ -2,7 +2,7 @@ package net.ww.web.italker.push.provider;
 
 import com.google.common.base.Strings;
 
-import net.ww.web.italker.push.bean.api.bean.ResponseModel;
+import net.ww.web.italker.push.bean.api.base.ResponseModel;
 import net.ww.web.italker.push.bean.db.User;
 import net.ww.web.italker.push.factory.UserFactory;
 import org.glassfish.jersey.server.ContainerRequest;
