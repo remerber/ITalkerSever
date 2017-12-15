@@ -1,10 +1,9 @@
 package net.ww.web.italker.push;
 
-import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
+
 import com.sun.media.jfxmedia.logging.Logger;
 import net.ww.web.italker.push.provider.AuthRequestFilter;
 import net.ww.web.italker.push.provider.GsonProvider;
-import net.ww.web.italker.push.service.AccountService;
 import net.ww.web.italker.push.service.AccountService;
 import org.glassfish.jersey.server.ResourceConfig;
 

@@ -54,14 +54,6 @@ public class UserService extends BaseService {
         User self = getSelf();
 
 
-        PushModel model = new PushModel();
-        model.add(new PushModel.Entity(0, "HELLO..."));
-
-        PushDispatcher dispatcher = new PushDispatcher();
-        dispatcher.add(self, model);
-        dispatcher.submit();
-
-
         // 拿到我的联系人
         List<User> users = UserFactory.contacts(self);
         // 转换为UserCard
